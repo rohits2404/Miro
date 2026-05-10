@@ -1,0 +1,53 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="32" y1="24" x2="220" y2="232" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7C3AED"/>
+      <stop offset="0.5" stop-color="#4F46E5"/>
+      <stop offset="1" stop-color="#06B6D4"/>
+    </linearGradient>
+
+    <linearGradient id="card1" x1="52" y1="72" x2="120" y2="160" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FDE68A"/>
+      <stop offset="1" stop-color="#F59E0B"/>
+    </linearGradient>
+
+    <linearGradient id="card2" x1="110" y1="48" x2="196" y2="140" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F9A8D4"/>
+      <stop offset="1" stop-color="#EC4899"/>
+    </linearGradient>
+
+    <linearGradient id="card3" x1="90" y1="132" x2="204" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#93C5FD"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+
+    <filter id="shadow" x="0" y="0" width="256" height="256" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="256" height="256" rx="56" fill="url(#bg)"/>
+
+  <!-- Floating dots -->
+  <circle cx="48" cy="52" r="6" fill="white" fill-opacity="0.7"/>
+  <circle cx="208" cy="62" r="8" fill="#C4B5FD"/>
+  <circle cx="196" cy="206" r="5" fill="white" fill-opacity="0.6"/>
+
+  <!-- Abstract collaboration boards -->
+  <g filter="url(#shadow)">
+    <rect x="48" y="78" width="72" height="92" rx="20" transform="rotate(-8 48 78)" fill="url(#card1)"/>
+
+    <rect x="102" y="42" width="86" height="108" rx="24" transform="rotate(6 102 42)" fill="url(#card2)"/>
+
+    <rect x="88" y="124" width="96" height="72" rx="22" transform="rotate(-4 88 124)" fill="url(#card3)"/>
+  </g>
+
+  <!-- Connection lines -->
+  <path d="M92 116C114 96 138 94 164 108" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+  <path d="M108 156C128 144 148 144 170 154" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Center spark -->
+  <circle cx="132" cy="128" r="14" fill="white"/>
+  <path d="M132 114L136 124L146 128L136 132L132 142L128 132L118 128L128 124L132 114Z" fill="#7C3AED"/>
+</svg>

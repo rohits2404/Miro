@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import ConvexClientProvider from "@/providers/convex-client-provider";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const inter = Inter({
     subsets:['latin'],
@@ -24,7 +25,9 @@ export default function RootLayout({
             <body className={inter.className}>
                 <ClerkProvider>
                     <ConvexClientProvider>
-                        {children}
+                        <TooltipProvider>
+                            {children}
+                        </TooltipProvider>
                     </ConvexClientProvider>
                 </ClerkProvider>
             </body>

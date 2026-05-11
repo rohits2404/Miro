@@ -15,6 +15,21 @@ export const get = query({
         .withIndex("by_org", (q) => q.eq("orgId", args.orgId))
         .order("desc")
         .collect();
-        return boards;
+        const boardsWithFavoriteRelation = boards.map(async (board) => {
+            const favorite = await ctx.db
+                .query("userFavorites")
+                .withIndex(
+                    "by_user_board", (q) => q
+                        .eq("userId", identity.subject)
+                        .eq("boardId", board._id)
+                )
+                .unique();
+            return {
+                ...board,
+                isFavorite: !!favorite,
+            };
+        });
+        const boardsWithFavoriteBoolean = Promise.all(boardsWithFavoriteRelation);
+        return boardsWithFavoriteBoolean;
     },
 });

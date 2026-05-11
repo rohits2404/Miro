@@ -1,3 +1,4 @@
+import { Room } from "@/components/Room";
 import { Canvas } from "@/features/boards/canvas";
 import React from "react";
 
@@ -11,7 +12,9 @@ const BoardIdPage = ({
     params,
 }: BoardIdPageProps) => {
     return (
-        <Canvas boardId={params.boardId} />
+        <Room>
+            <Canvas boardId={params.boardId} />
+        </Room>
     );
 };
 

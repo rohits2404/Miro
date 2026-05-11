@@ -8,10 +8,10 @@ import {
 } from "@liveblocks/react/suspense";
 import { Loading } from "@/features/boards/components/loading";
 
-export function Room({ children }: { children: ReactNode }) {
+export function Room({ children, roomId }: { children: ReactNode, roomId: string }) {
     return (
-        <LiveblocksProvider publicApiKey={process.env.NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY!}>
-            <RoomProvider id="my-room">
+        <LiveblocksProvider authEndpoint={"/api/liveblocks-auth"}>
+            <RoomProvider id={roomId}>
                 <ClientSideSuspense fallback={<Loading />}>
                     {children}
                 </ClientSideSuspense>

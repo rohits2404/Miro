@@ -3,17 +3,18 @@ import { Canvas } from "@/features/boards/canvas";
 import React from "react";
 
 interface BoardIdPageProps {
-    params: {
+    params: Promise<{
         boardId: string;
-    };
-};
+    }>;
+}
 
-const BoardIdPage = ({
-    params,
-}: BoardIdPageProps) => {
+const BoardIdPage = async ({ params }: BoardIdPageProps) => {
+  
+    const { boardId } = await params;
+
     return (
-        <Room>
-            <Canvas boardId={params.boardId} />
+        <Room roomId={boardId}>
+            <Canvas boardId={boardId} />
         </Room>
     );
 };

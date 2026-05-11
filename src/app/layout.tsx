@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import ConvexClientProvider from "@/providers/convex-client-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
+import { ModalProvider } from "@/providers/modal-provider";
 
 const inter = Inter({
     subsets:['latin'],
@@ -27,6 +28,7 @@ export default function RootLayout({
                 <ClerkProvider>
                     <ConvexClientProvider>
                         <Toaster/>
+                        <ModalProvider/>
                         <TooltipProvider>
                             {children}
                         </TooltipProvider>

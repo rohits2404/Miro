@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { Plus } from "lucide-react";
 import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 interface NewBoardButtonProps {
     orgId: string;
@@ -16,6 +17,8 @@ export const NewBoardButton = ({
     orgId,
     disabled,
 }: NewBoardButtonProps) => {
+
+    const router = useRouter();
 
     const { user } = useUser();
   
@@ -29,7 +32,7 @@ export const NewBoardButton = ({
         })
         .then((id) => {
             toast.success("Board Created");
-            // TODO: Redirect to /board/{id}
+            router.push(`/board/${id}`);
         })
         .catch(() => toast.error("Failed To Create Board"));
     }

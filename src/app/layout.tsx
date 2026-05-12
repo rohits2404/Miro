@@ -6,6 +6,8 @@ import ConvexClientProvider from "@/providers/convex-client-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 import { ModalProvider } from "@/providers/modal-provider";
+import { Suspense } from "react";
+import { Loading } from "@/components/auth/loading";
 
 const inter = Inter({
     subsets:['latin'],
@@ -15,6 +17,9 @@ const inter = Inter({
 export const metadata: Metadata = {
     title: "Miro",
     description: "A Real-Time Collaborative Whiteboard App For Brainstorming, Diagramming, Drawing, and Team Collaboration.",
+    icons: {
+        icon: "/favicon.svg"
+    }
 };
 
 export default function RootLayout({
@@ -25,15 +30,17 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <ClerkProvider>
-                    <ConvexClientProvider>
-                        <Toaster/>
-                        <ModalProvider/>
-                        <TooltipProvider>
-                            {children}
-                        </TooltipProvider>
-                    </ConvexClientProvider>
-                </ClerkProvider>
+                <Suspense fallback={<Loading/>}>
+                    <ClerkProvider>
+                        <ConvexClientProvider>
+                            <Toaster/>
+                            <ModalProvider/>
+                            <TooltipProvider>
+                                {children}
+                            </TooltipProvider>
+                        </ConvexClientProvider>
+                    </ClerkProvider>
+                </Suspense>
             </body>
         </html>
     );

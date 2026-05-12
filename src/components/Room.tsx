@@ -18,6 +18,8 @@ export function Room({ children, roomId }: { children: ReactNode, roomId: string
             initialPresence={{
                 cursor: null,
                 selection: [],
+                pencilDraft: null,
+                penColor: null,
             }}
             initialStorage={{
                 layers: new LiveMap<string, LiveObject<Layer>>(),
